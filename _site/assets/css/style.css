@@ -1,12 +1,61 @@
+body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure { margin: 0; padding: 0; }
+
 body {
-	background-color: #e2e2e2;
+	font-family: Arial, sans-serif;
+}
+/* Navigation */
+nav {
+	padding: 15px 0px 15px 0px;
+	display: flex;
+	justify-content: center;
+}
+
+nav ul {
+	list-style-type: none;
+}
+
+nav ul li {
+	display: inline-block;
+	float: left;
+	padding: 5px;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+img {
+	object-fit: cover;
+	width: auto;
+	height: 200px;
+}
+
+.container {
+	padding: 5px 15% 5px 15%;
 }
 
 .current {
-	color: green;
+	border-bottom: 2px solid black;
 }
 
 .author {
 	color: blue;
+}
+
+.circle {
+	object-fit: cover;
+	border: 2px solid white;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+
+.bg-lightpurple {
+	background: #B399D4;
+}
+
+@media screen and (max-width: 600px;) {
+
 }
 

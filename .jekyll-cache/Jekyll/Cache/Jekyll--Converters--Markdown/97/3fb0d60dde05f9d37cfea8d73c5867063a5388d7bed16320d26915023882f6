@@ -1,0 +1,31 @@
+I"ê<h1 id="about-me">About Me</h1>
+
+<p>My name is Joris Veldt and have a bachelor and master degree in Business Administration. I like to build stuff.</p>
+
+<blockquote>
+  <p>Dorothy followed her through many of the beautiful rooms in her castle.</p>
+</blockquote>
+
+<ul>
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
+  <li>Fourth item</li>
+</ul>
+
+<ol>
+  <li>Open the file.</li>
+  <li>
+    <p>Find the following code block on line 21:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;html&gt;</span>
+   <span class="nt">&lt;head&gt;</span>
+     <span class="nt">&lt;title&gt;</span>Test<span class="nt">&lt;/title&gt;</span>
+   <span class="nt">&lt;/head&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Update the title to match the name of your website.</li>
+</ol>
+
+<p><img src="/assets/images/foto.jpg" alt="Joris" /></p>
+:ET
