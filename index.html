@@ -2,21 +2,19 @@
 # front matter tells Jekyll to process Liquid
 layout: default
 title: Home
-featured-image: /assets/img/foto.jpg
 ---
+{% include header.html %}
+<section>
 
-<h1>Latest Posts</h1>
+<table>
+	{% for post in site.posts %}
+	<tr>
+		<td>{{ post.date | date: "%-d %B %Y" }}</td>
+		<td>{{ post.tags[0] }}</td>
+		<td><a href="{{ post.url }}">{{ post.title }}</a></td>
+	</tr>
+	{% endfor %}
+</table>
+	
+</section>
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      	<h2>
-      		<a href="{{ post.url }}">
-      			{{ post.title }}
-      		</a>
-      	</h2>
-      	<p>Posted on {{ post.date | date_to_string }} by <span class="author">{{ post.author }}</span></p>
-      	{{ post.excerpt }}
-    </li>
-  {% endfor %}
-</ul>
