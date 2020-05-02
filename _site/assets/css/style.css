@@ -30,7 +30,7 @@ header.front-page {
 
 .header-background {
     background-size: cover;
-    background-position: center;
+    background-position: left center;
     opacity: 0.25;
     position: fixed;
 }
@@ -262,6 +262,18 @@ p, li {
     font-weight: 300;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Proxima Nova","Helvetica Neue","Helvetica",sans-serif;
     font-weight: 400;
+}
+
+a, p a {
+    color: #16a2f9;
+}
+
+a, p a {
+    text-decoration: underline;
+}
+
+a:hover, p a:hover {
+	text-decoration: none;
 }
 
 @media (max-width: 880px) {
