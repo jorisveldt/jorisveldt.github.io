@@ -6,16 +6,18 @@ title: Home
 {% include header.html %}
 
 <section>
-
-<table>
-	{% for post in site.posts %}
-	<tr>
-		<td>{{ post.date | date: "%-d %B %Y" }}</td>
-		<td>{{ post.tags[0] }}</td>
-		<td><a href="{{ post.url }}">{{ post.title }}</a></td>
-	</tr>
-	{% endfor %}
-</table>
-	
+	<div id="container">
+		<div class="postindex">
+		{% for post in site.posts %}
+			<div class="postindex-item">
+				<div class="postindex-body">
+					<div class="postindex-date">{{ post.date | date: "%-d %B %Y" }}</div>
+					<div class="postindex-tag">{{ post.tags[0] }}</div>
+					<div class="postindex-title"><a href="{{ post.url }}">{{ post.title }}</a></div>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
 </section>
 
