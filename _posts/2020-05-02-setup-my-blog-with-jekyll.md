@@ -5,7 +5,7 @@ tags: [fruit, summer]
 ---
 Today I created this blog with Jekyll. Initially I wanted to create a WordPress website but I came across this [tweet](https://twitter.com/yongfook/status/1253968323781550080). Although Jon Yongfook migrated his website to Middleman, suggesting that it might be a better solution. I figured out that it was what he was looking for and that Jekyll is what I'm looking for.
 
-Althoug I followed a 10 week bootcamp in fullstack webdevelopment in 2018, setting up this blog was an experience. I must say the documentation was pretty easy to follow. But then the challenging part came. I wanted to have a nice layout but didn't know exactly what. So I was just fiddling around and never satisfied with the result. Simply because I didn't knew how I wanted to have it look like. This is the first lesson I learned with setting up this blog.
+Althoug I followed a 10 week bootcamp in fullstack webdevelopment in 2018, setting up this blog was an experience. I must say the documentation was pretty easy to follow. But then the challenging part came. I wanted to have a nice layout but didn't know exactly what. So I was just fiddling around and never satisfied with the result. Simply because I didn't know how I wanted to have it look like. This is the first lesson I learned with setting up this blog.
 
 In addition, I saw that it is possible to use Git and Github Pages with Jekyll. I know that a lot of companies work with Git and that it would be nice to gain some experience with it. Git is a version control system that keeps track of all your changes. When I'm done with changing I commit a change and push it to Github Pages.
 
