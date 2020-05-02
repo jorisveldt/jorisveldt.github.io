@@ -298,5 +298,27 @@ a:hover, p a:hover {
 	}
 }
 
-
+@media (max-width: 480px) {
+    .entry-title {
+        padding-left: 1em;
+        padding-right: 1em;
+        box-sizing: border-box;
+        padding-bottom: 1em !important;
+        padding-top: 1em !important;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 1em;
+        padding-right: 1em;
+        width: 100%;
+    }
+    .entry-content.long > p:first-child {
+        font-size: 1.1em; 
+        font-size: 24px;
+        font-size: 1em;
+    }
+    p {
+        padding-left: 1em !important;
+        padding-right: 1em !important;
+    }
+}
 
