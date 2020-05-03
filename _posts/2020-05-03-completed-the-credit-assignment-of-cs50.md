@@ -3,7 +3,7 @@ layout: post
 author: Joris Veldt
 tags: [CS50, programming]
 ---
-I did it! Yesterday after dinner I started with the first week assignment of the [CS50 course](https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/). Better known as the credit assignment. I spend the whole night and this morning and afternoon to solve this problem. And it feels damn good that I finally did it! :smile:
+I did it! Yesterday after dinner I started with the first week assignment of the [CS50 course](https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/). Better known as the credit assignment. I spend the whole night and this morning and afternoon to solve this problem. And it feels damn good that I finally did it! 😃
 
 So the exercise was about Luhn's Algorithm. This algorithm lets you determine if a credit card number is (syntactically) valid with three (simple - ahum ahum) steps:
 1. Multiply every other digit by 2, starting with the number’s second-to-last digit, and then add those products’ digits together.
