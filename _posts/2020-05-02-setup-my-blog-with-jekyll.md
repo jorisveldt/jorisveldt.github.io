@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Joris Veldt
-tags: [fruit, summer]
+tags: [Code]
 ---
 Today I created this blog with Jekyll. Initially I wanted to create a WordPress website but I came across this [tweet](https://twitter.com/yongfook/status/1253968323781550080). Although Jon Yongfook migrated his website to Middleman, suggesting that it might be a better solution. I figured out that it was what he was looking for and that Jekyll is what I'm looking for.
 
