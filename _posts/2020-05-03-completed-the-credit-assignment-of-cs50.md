@@ -3,7 +3,12 @@ layout: post
 author: Joris Veldt
 tags: [CS50, programming]
 ---
-I did it! Yesterday after dinner I started with the first week assignment of the CS50 course. Better known as the credit assignment. I spend the whole night and this morning and afternoon to solve this problem. And it feels damn good that I finally did it!
+I did it! Yesterday after dinner I started with the first week assignment of the [CS50 course](https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/). Better known as the credit assignment. I spend the whole night and this morning and afternoon to solve this problem. And it feels damn good that I finally did it! :smile:
+
+So the exercise was about Luhn's Algorithm. This algorithm lets you determine if a credit card number is (syntactically) valid with three (simple - ahum ahum) steps:
+1. Multiply every other digit by 2, starting with the number’s second-to-last digit, and then add those products’ digits together.
+2. Add the sum to the sum of the digits that weren’t multiplied by 2.
+3. If the total’s last digit is 0 (or, put more formally, if the total modulo 10 is congruent to 0), the number is valid!
 
 In my deepest and weakest moment it was very tempting to Google for the solution. But I resisted the temptation and kept puzzling on my own. There were a couple of times that I seriously had the feeling that I came close to the solution. But not all test cases made it so I needed to puzzle again.
 
