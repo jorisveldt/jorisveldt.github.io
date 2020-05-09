@@ -1,0 +1,2 @@
+I"ú<p>Today I completed the readability assignment on CS50. I was asked to write a program that could read the reading level of a book or text. This could be calculated with the Coleman-Liau index: <code>index = 0.0588 * L - 0.296 * S - 15.8</code></p>
+:ET

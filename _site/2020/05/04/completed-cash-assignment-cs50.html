@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Completed Cash Assignment Cs50</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Completed Cash Assignment Cs50</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Completed Cash Assignment Cs50" />
+<meta name="author" content="Joris Veldt" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Today I finished the cash assigment of first weeks lecture within one hour!! Yesterday I struggled with the credit assignment and worked on it way longer than I did with this assignment." />
+<meta property="og:description" content="Today I finished the cash assigment of first weeks lecture within one hour!! Yesterday I struggled with the credit assignment and worked on it way longer than I did with this assignment." />
+<link rel="canonical" href="http://localhost:4000/2020/05/04/completed-cash-assignment-cs50.html" />
+<meta property="og:url" content="http://localhost:4000/2020/05/04/completed-cash-assignment-cs50.html" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-04T00:00:00+02:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/05/04/completed-cash-assignment-cs50.html"},"url":"http://localhost:4000/2020/05/04/completed-cash-assignment-cs50.html","headline":"Completed Cash Assignment Cs50","dateModified":"2020-05-04T00:00:00+02:00","datePublished":"2020-05-04T00:00:00+02:00","author":{"@type":"Person","name":"Joris Veldt"},"description":"Today I finished the cash assigment of first weeks lecture within one hour!! Yesterday I struggled with the credit assignment and worked on it way longer than I did with this assignment.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <div id="container">
+	<article id="content">
+		<div class="entry-meta entry-meta-date">May 04, 2020</div>
+		<h1 class="entry-title">Completed Cash Assignment Cs50</h1>
+		<div class="entry-meta"><a href="">CS50</a></div>
+		<div class="entry-content long"><p>Today I finished the cash assigment of first weeks lecture within one hour!! Yesterday I struggled with the <a href="/2020/05/03/completed-the-credit-assignment-of-cs50.html">credit</a> assignment and worked on it way longer than I did with this assignment.</p>
+
+<p>This assignment was about returning change with as less as possible coins. In this particular exercise I only had coins of 25, 10, 5 and 1 cents. So if I’d get 41 cents in change I would get 4 coins.</p>
+
+<p>For simplicity I was allowed to prompt to the user the amount of change I owed him. This means that the user could fill in how much change he/she needed to receive. The user was allowed to fill in a float number. If he’d paid with a $10 dollar bill and bought a bread of 25 cents he would get $9.75 in change.</p>
+
+<p>I needed to convert this number to cents and used the following solution for that:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">round</span><span class="p">(</span><span class="n">userChange</span> <span class="o">*</span> <span class="mi">100</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Now I always had a round number that I could use for further problem solving. At this point, I needed to initialize a new variable (coins) because I need to say to my customer how many many coins he/she would get.</p>
+
+<p>Then, I wanted to start a loop to iterate over my conditional logic. I used a while loop <code>while (cents &gt; 0)</code>. My conditional logic was as follows, if the cents were bigger than or equal to 25 then I wanted to divide the cents by 25 and assign the result to the variable coins. I used the operate <code>+=</code> because my code would break if there would be a 50 cent coin added later on to my code. It would ‘forget’ the number of coins of 50 cents.</p>
+
+<p>Finally, I needed to know the total cents left for further evaluation. I solved this problems by using the modulus operator. For example, <code>41 % 25</code> gives 16. This number could be used for further conditional logic.</p>
+
+<p>Here is my solution:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;cs50.h&gt;
+#include &lt;math.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="kt">float</span> <span class="n">userChange</span><span class="p">;</span>
+
+    <span class="c1">// Prompt user how much change we owe him. No negative numbers allowed</span>
+    <span class="k">do</span>
+    <span class="p">{</span>
+        <span class="n">userChange</span> <span class="o">=</span> <span class="n">get_float</span><span class="p">(</span><span class="s">"Change owed: "</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// Negative number? Prompt user again</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">userChange</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="c1">// Multiply input * 100</span>
+    <span class="kt">int</span> <span class="n">cents</span> <span class="o">=</span> <span class="n">round</span><span class="p">(</span><span class="n">userChange</span> <span class="o">*</span> <span class="mi">100</span><span class="p">);</span>
+    <span class="c1">// Initialize coins for return</span>
+    <span class="kt">int</span> <span class="n">coins</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// While change is bigger than 0 then...</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">cents</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cents</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// count coins by dividing by 25</span>
+            <span class="n">coins</span> <span class="o">+=</span> <span class="p">(</span><span class="n">cents</span> <span class="o">/</span> <span class="mi">25</span><span class="p">);</span>
+            <span class="c1">// count remainder of cents by using modulus</span>
+            <span class="n">cents</span> <span class="o">=</span> <span class="n">cents</span> <span class="o">%</span> <span class="mi">25</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">cents</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">coins</span> <span class="o">+=</span> <span class="p">(</span><span class="n">cents</span> <span class="o">/</span> <span class="mi">10</span><span class="p">);</span>
+            <span class="n">cents</span> <span class="o">=</span> <span class="n">cents</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">cents</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">coins</span> <span class="o">+=</span> <span class="p">(</span><span class="n">cents</span> <span class="o">/</span> <span class="mi">5</span><span class="p">);</span>
+            <span class="n">cents</span> <span class="o">=</span> <span class="n">cents</span> <span class="o">%</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">coins</span> <span class="o">+=</span> <span class="p">(</span><span class="n">cents</span> <span class="o">/</span> <span class="mi">1</span><span class="p">);</span>
+            <span class="n">cents</span> <span class="o">=</span> <span class="n">cents</span> <span class="o">%</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">coins</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+	</article>
+</div>
+  </body>
+</html>

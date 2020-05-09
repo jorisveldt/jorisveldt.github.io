@@ -1,0 +1,339 @@
+I"�x<p>The last couple of days I proceeded with the CS50 course. I watched the course material for week 2 and 3 and finished the “easier” assignments. On the one hand, I feel guilty for not finishing the “more difficult” assignments, but on the other hand, I like to move forward and I still have the possibility to finish them later. Honestly, we all know that finishing later means not doing it at all (in most cases). But let’s focus on the better part: I made a lot of progress last days so let’s elaborate on that!</p>
+
+<p>With some work I finished all the week 2 assignments and noticed that programming involves a lot of structural thinking. I finished an alpha study and thinking in structures feels more like beta so that’s new to me. This is part of my learning process. Taking a number and flowing through my code in my mind demonstrated that my computer is smarter and faster than I am. Debugging by logging to my console seems to work for me! This also reminds me that I really should learn to work with the debugger. Some assignments took me longer to solve than I originally was hoping for, but sticking to it and solving it on your own gives a good feeling.</p>
+
+<p>So, I created a program called ‘Caesar’ that kind of encrypted messages. So, as a user I was prompted to fill in a number and use that number to encrypt the message. Then, I was asked to fill in the text that should be encrypted. For example, I gave 1 as a number and as text <code class="highlighter-rouge">Hello, World!</code>. This then would become <code class="highlighter-rouge">Ifnnp, Xpsne!</code>. Do you get? I increased each letter +1. If you don’t get it that’s fine too. For me it was a huge achievement at that time.</p>
+
+<p>Like any proud student, I shared this achievement during dinner at my girlfriends parents place. They were happy to see the joy in my face but questioned “What can you do with it”. So I explained further and then they ask the question “Why would you use it?”. Bummer… I probably should join some forums to share my joy and/or find friends who like to code as well. I think it keeps you more motivated to push it further.</p>
+
+<p>Week 3 was about algorithms and damn… It has been a while that I thought or used mathematics. Although I now understand some algorithms used in Computer Science I still don’t know how they are written in code. But I guess I will find out in a later stage. For future me I took some notes and put them down here.</p>
+
+<p>In CS are the big O and big Omega (Ω) notation used to explain the performance or complexity of an alogrithm. The difference between Big O and Big Ω is that Big O is used to describe the <strong>worst case</strong> running time for an algorithm. Big Ω is used to describe the <strong>best case</strong> running tiem for a given algorithm. Below is an image of most the main complexities (n log n is missing and is between O(n2) and O(n)).</p>
+
+<p><img src="/assets/images/efficiency-algorithms-cs.png" alt="Complexity in Computer Science to understand runtimes" />
+Source: <a href="https://miro.medium.com/max/1400/1*yiyfZodqXNwMouC0-B0Wlg.png">Medium</a></p>
+
+<p>There are several algorithms that can be used to solve a problem. It depends on the occassion but I made some notes and created a nice table for it.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Algorithm Name</th>
+      <th>Basic Concept</th>
+      <th>O</th>
+      <th>Ω</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Selction Sort</td>
+      <td>Find the <strong>smallest</strong> unsorted element in an array and swap it with the <strong>first</strong> unsorted element of that array</td>
+      <td>O(n2)</td>
+      <td>Ω(n2)</td>
+    </tr>
+    <tr>
+      <td>Bubble Sort</td>
+      <td>Swap <strong>adjacent pairs</strong> of elements if they are out of order, effectively “bubbling” larger elements to the right and smaller ones to the left</td>
+      <td>O(n2)</td>
+      <td>Ω(n)</td>
+    </tr>
+    <tr>
+      <td>Insertion Sort</td>
+      <td>Proceed once through the array from left-to-right, <strong>shifting</strong> elements as necessary to insert each element into its correct place</td>
+      <td>O(n2)</td>
+      <td>Ω(n)</td>
+    </tr>
+    <tr>
+      <td>Merge Sort</td>
+      <td><strong>Split</strong> the full array into subarrays, then <strong>merge</strong> these subarrays back together in the correct order</td>
+      <td>O(n log n)</td>
+      <td>Ω(n log n)</td>
+    </tr>
+    <tr>
+      <td>Linear Search</td>
+      <td><strong>Iterate</strong> across the array from left-to-right trying to find the target element</td>
+      <td>O(n)</td>
+      <td>Ω(1)</td>
+    </tr>
+    <tr>
+      <td>Binary Search</td>
+      <td>Giving a <em>sorted</em> array, <strong>divide and conquer</strong> by systematically eliminating half of the remaining elements in the search for target element</td>
+      <td>O(log n)</td>
+      <td>Ω(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In week 3 there were assignments on elections. The first assignment was about plurality and was pretty easy to solve. However, the assignment Runoff gave me more trouble to solve it and I must admit that after one day of puzzling and cursing I couldn’t resist the temptation to crib on stackoverflow. Although I would have loved to solve the puzzle on my own I felt that this was a point where I could use some help. In the beginning of this point I was talking about thinking in structures and this was where my first mistake was.</p>
+
+<p>There was a matrix array involved in this assignment and I was not able to update the counts of a specific candidate. Below I have added a table to explain it. The first array were the candidates where 0 represented Alice, 1 Bob and so on. The other rows are the votes. The first row shows that the voter first voted for Charlie, then Alice and finally Bob.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>0 (Alice)</th>
+      <th>1 (Bob)</th>
+      <th>2 (Charlie)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I was asked to create a function that tabulate votes for non-eliminated candidates. I figured out that I need two for-loops and that I somewhere needed to update the votes and then stop the loops. But assigning the votes to the right candidate was the problem. In particular, this part was where I struggled: <code class="highlighter-rouge">candidates[preferences[i][j]]</code>. I was not able to see that I could get the number of a specific cell and use that number to link it to a candidate. I was thinking about converting it to a string that represented the name. Way more difficult than the actual solution… This actually is a real life problem, we’re overthinking stuff while the solution actually simple!</p>
+
+<p>The second part where I was struggling was the is_tie method. The method takes an int as parameter. I needed to return true if the election is tied between all candidates, false otherwise. Here I needed to swap the return values true and false. I ended with false because that was what I’ve seen so far. I think I stared too long to it to actually see that the solution was there all the time.</p>
+
+<p>Here is my final solution:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="c1">// Max voters and candidates</span>
+<span class="cp">#define MAX_VOTERS 100
+#define MAX_CANDIDATES 9
+</span>
+<span class="c1">// preferences[i][j] is jth preference for voter i</span>
+<span class="kt">int</span> <span class="n">preferences</span><span class="p">[</span><span class="n">MAX_VOTERS</span><span class="p">][</span><span class="n">MAX_CANDIDATES</span><span class="p">];</span>
+
+<span class="c1">// Candidates have name, vote count, eliminated status</span>
+<span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">votes</span><span class="p">;</span>
+    <span class="n">bool</span> <span class="n">eliminated</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">candidate</span><span class="p">;</span>
+
+<span class="c1">// Array of candidates</span>
+<span class="n">candidate</span> <span class="n">candidates</span><span class="p">[</span><span class="n">MAX_CANDIDATES</span><span class="p">];</span>
+
+<span class="c1">// Numbers of voters and candidates</span>
+<span class="kt">int</span> <span class="n">voter_count</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">candidate_count</span><span class="p">;</span>
+
+<span class="c1">// Function prototypes</span>
+<span class="n">bool</span> <span class="nf">vote</span><span class="p">(</span><span class="kt">int</span> <span class="n">voter</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rank</span><span class="p">,</span> <span class="n">string</span> <span class="n">name</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">tabulate</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="n">bool</span> <span class="nf">print_winner</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">find_min</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="n">bool</span> <span class="nf">is_tie</span><span class="p">(</span><span class="kt">int</span> <span class="n">min</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">eliminate</span><span class="p">(</span><span class="kt">int</span> <span class="n">min</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="c1">// Check for invalid usage</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Usage: runoff [candidate ...]</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Populate array of candidates</span>
+    <span class="n">candidate_count</span> <span class="o">=</span> <span class="n">argc</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">candidate_count</span> <span class="o">&gt;</span> <span class="n">MAX_CANDIDATES</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Maximum number of candidates is %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">MAX_CANDIDATES</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">votes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">eliminated</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">voter_count</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Number of voters: "</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">voter_count</span> <span class="o">&gt;</span> <span class="n">MAX_VOTERS</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Maximum number of voters is %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">MAX_VOTERS</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Keep querying for votes</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">voter_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Query for each rank</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"Rank %i: "</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+            <span class="c1">// Record vote, unless it's invalid</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">vote</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"Invalid vote.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                <span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Keep holding runoffs until winner exists</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Calculate votes given remaining candidates</span>
+        <span class="n">tabulate</span><span class="p">();</span>
+
+        <span class="c1">// Check if election has been won</span>
+        <span class="n">bool</span> <span class="n">won</span> <span class="o">=</span> <span class="n">print_winner</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">won</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Eliminate last-place candidates</span>
+        <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">find_min</span><span class="p">();</span>
+        <span class="n">bool</span> <span class="n">tie</span> <span class="o">=</span> <span class="n">is_tie</span><span class="p">(</span><span class="n">min</span><span class="p">);</span>
+
+        <span class="c1">// If tie, everyone wins</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">tie</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">eliminated</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Eliminate anyone with minimum number of votes</span>
+        <span class="n">eliminate</span><span class="p">(</span><span class="n">min</span><span class="p">);</span>
+
+        <span class="c1">// Reset vote counts back to zero</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">votes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Record preference if vote is valid</span>
+<span class="n">bool</span> <span class="nf">vote</span><span class="p">(</span><span class="kt">int</span> <span class="n">voter</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rank</span><span class="p">,</span> <span class="n">string</span> <span class="n">name</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Look for a candidate called name</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// If candidate found, update preferences so that they are the voter's rank preference, and return true</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">preferences</span><span class="p">[</span><span class="n">voter</span><span class="p">][</span><span class="n">rank</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// If no candidate found, don't update any preferences and return false</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Tabulate votes for non-eliminated candidates</span>
+<span class="kt">void</span> <span class="nf">tabulate</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">voter_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">candidates</span><span class="p">[</span><span class="n">preferences</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]].</span><span class="n">eliminated</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">candidates</span><span class="p">[</span><span class="n">preferences</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]].</span><span class="n">votes</span><span class="o">++</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Print the winner of the election, if there is one</span>
+<span class="n">bool</span> <span class="nf">print_winner</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// If any candidate has more than half the vote, print out their name and return type</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">votes</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">voter_count</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// if nobody has won the election yet, return false</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Return the minimum number of votes any remaining candidate has</span>
+<span class="kt">int</span> <span class="nf">find_min</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Return the minimum number of votes of anyone still in the election</span>
+    <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">votes</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">eliminated</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">votes</span> <span class="o">&lt;</span> <span class="n">min</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">min</span> <span class="o">=</span> <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">votes</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">min</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Return true if the election is tied between all candidates, false otherwise</span>
+<span class="n">bool</span> <span class="nf">is_tie</span><span class="p">(</span><span class="kt">int</span> <span class="n">min</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Accepts the minimum number of votes min as input</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">eliminated</span> <span class="o">==</span> <span class="nb">false</span> <span class="o">&amp;&amp;</span> <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">votes</span> <span class="o">!=</span> <span class="n">min</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// Return true if the election is tied between all remaining candidates, and returns false otherwise</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Eliminate the candidate (or candidiates) in last place</span>
+<span class="kt">void</span> <span class="nf">eliminate</span><span class="p">(</span><span class="kt">int</span> <span class="n">min</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Eliminate anyone still in the race who has the min number of votes</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">candidate_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">votes</span> <span class="o">==</span> <span class="n">min</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">eliminated</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+:ET

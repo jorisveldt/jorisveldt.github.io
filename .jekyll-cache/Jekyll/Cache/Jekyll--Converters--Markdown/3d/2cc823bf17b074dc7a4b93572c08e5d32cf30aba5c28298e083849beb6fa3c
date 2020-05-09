@@ -1,0 +1,134 @@
+I"8<p>Today I completed the readability assignment on CS50. I was asked to write a program that could read the reading level of a book or text. This could be calculated with the Coleman-Liau index: <code>index = 0.0588 * L - 0.296 * S - 15.8</code></p>
+
+<p>In the morning I followed the lecture videos of week 2. Around 3 hours of lecture material to watch. I planned to work on it for the whole day because I had a day off from work (it is Liberation Day in the Netherlands). However, my grandparents and sister dropped by over the day so I had my social activities as well. Furthermore, I force myself to gym and/or run everyday because it keeps me energetic. I didn’t do as much as I hoped to do but still managed to watch all course material and finished the readability assignment.</p>
+
+<p>Woops! Almost forgot to tell that I organized a (digitial) Kahoot! quiz for my university friends. That also took ±2 hours of my coding time. I don’t care that much that I invested less time as I hoped to because it was nice to speak to my friends!</p>
+
+<p>So today I learned to work with functions and arrays. While watching the lecture material I seemed to have some difficulties to understand the difference between passing arrays by reference vs passing other variables by value. Now I get the difference.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+	<span class="n">set_int</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="c1">// Here I had difficulties. The problem was that I didn't see that the value was not assigned to a variable here (stupid me)</span>
+	<span class="n">set_array</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Finally, the readability assignment. So it chopped it down in pieces. First, I figured out how to get the total number of uppercase or lowercase alphabetic characters in the text. Second, I puzzled a little bit to get the total number of words in the text. No difference in characters separated by a space. So, “sister-in-law” should be considered as one word, not three. Finally, I wrote a function to count the number of sentences by considering that any sequence of characters that ends with a . or a ! or a ? to be a sentence.</p>
+
+<p>At the end I used all the functions that I build in my main function to calculate the Coleman-Liau index and determine the reading (grade) level. Here is my final submission:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;math.h&gt;
+#include &lt;ctype.h&gt;
+</span>
+<span class="c1">// Tell program to look down further for functions</span>
+<span class="kt">int</span> <span class="nf">count_letters</span><span class="p">(</span><span class="n">string</span> <span class="n">text</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">count_words</span><span class="p">(</span><span class="n">string</span> <span class="n">text</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">count_sentences</span><span class="p">(</span><span class="n">string</span> <span class="n">text</span><span class="p">);</span>
+
+<span class="c1">// Main function</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">text</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"Text: "</span><span class="p">);</span>
+
+    <span class="c1">// Initialize variables and call functions</span>
+    <span class="kt">float</span> <span class="n">letters</span> <span class="o">=</span> <span class="n">count_letters</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+    <span class="kt">float</span> <span class="n">words</span> <span class="o">=</span> <span class="n">count_words</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+    <span class="kt">float</span> <span class="n">sentences</span> <span class="o">=</span> <span class="n">count_sentences</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+
+    <span class="c1">// L is the average number of letters per 100 words in the text</span>
+    <span class="kt">float</span> <span class="n">L</span> <span class="o">=</span> <span class="p">(</span><span class="n">letters</span> <span class="o">/</span> <span class="n">words</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="c1">// S is the average number of sentences per 100 words in the text</span>
+    <span class="kt">float</span> <span class="n">S</span> <span class="o">=</span> <span class="n">sentences</span> <span class="o">/</span> <span class="n">words</span> <span class="o">*</span> <span class="mi">100</span><span class="p">;</span>
+
+    <span class="c1">// Calculate the Coleman-Liau index</span>
+    <span class="kt">float</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mo">05</span><span class="mi">88</span> <span class="o">*</span> <span class="n">L</span> <span class="o">-</span> <span class="mi">0</span><span class="p">.</span><span class="mi">296</span> <span class="o">*</span> <span class="n">S</span> <span class="o">-</span> <span class="mi">15</span><span class="p">.</span><span class="mi">8</span><span class="p">;</span>
+    <span class="c1">// Round the index number to nearest whole number</span>
+    <span class="kt">int</span> <span class="n">grade</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">round</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+
+    <span class="c1">// Conditional logic, if grade bigger than 16 then..</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Grade 16+</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// Check if grade is smaller than 1</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">grade</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Before Grade 1</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// Else print the following</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Grade %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">grade</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Function to count uppercase and lowercase alphabetic characters</span>
+<span class="kt">int</span> <span class="nf">count_letters</span><span class="p">(</span><span class="n">string</span> <span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get the length of the text given by the user</span>
+    <span class="kt">int</span> <span class="n">characters</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+
+    <span class="c1">// Initialize letters to start counting</span>
+    <span class="kt">int</span> <span class="n">letters</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// For each character in text given by the user</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">characters</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// If character is alphabetic character, then...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isalpha</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="p">{</span>
+            <span class="c1">// Add 1 to letters</span>
+            <span class="n">letters</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">letters</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">count_words</span><span class="p">(</span><span class="n">string</span> <span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get the length of the text given by the user</span>
+    <span class="kt">int</span> <span class="n">characters</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+
+    <span class="c1">// Initialize letters to start counting</span>
+    <span class="kt">int</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// For each character in text given by the user</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">characters</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// If character is alphabetic character, then...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isblank</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="p">{</span>
+            <span class="c1">// Add 1 to letters</span>
+            <span class="n">words</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">words</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">count_sentences</span><span class="p">(</span><span class="n">string</span> <span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get the length of the text given by the user</span>
+    <span class="kt">int</span> <span class="n">characters</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+
+    <span class="c1">// Initialize letters to start counting</span>
+    <span class="kt">int</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// For each character in text given by the user</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">characters</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// If character is alphabetic character, then...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'.'</span> <span class="o">||</span> <span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'?'</span> <span class="o">||</span> <span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'!'</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Add 1 to letters</span>
+            <span class="n">sentences</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sentences</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET
